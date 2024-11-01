@@ -1,0 +1,148 @@
+/* 基礎設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    padding: 2rem;
+    position: relative;
+    transition: color 0.5s ease;
+    overflow-x: hidden;
+}
+
+/* 添加過渡動畫效果 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    clip-path: circle(0% at 100% 0);
+    transition: clip-path 0.5s ease;
+    z-index: -1;
+}
+
+body.dark-mode::before {
+    clip-path: circle(150% at 100% 0);
+}
+
+/* 作品集區塊樣式 */
+.portfolio h1 {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: box-shadow 0.5s ease;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.9);
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease, background 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-info {
+    transform: translateY(0);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #6b48ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #5333ff;
+}
+
+/* RWD 設定 */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .portfolio h1 {
+        font-size: 2rem;
+    }
+}
+
+/* 深色模式切換按鈕 */
+.theme-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 1.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* 深色模式樣式 */
+.dark-mode {
+    color: #fff;
+}
+
+.dark-mode .portfolio-info {
+    background: rgba(0,0,0,0.9);
+    color: #fff;
+}
+
+.dark-mode .btn {
+    background: #8b68ff;
+}
+
+.dark-mode .btn:hover {
+    background: #7353ff;
+}
+
+/* 新增 header 樣式 */
+.site-header {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}

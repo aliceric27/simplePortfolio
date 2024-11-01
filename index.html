@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作品集</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <button @click="toggleDarkMode" class="theme-toggle">
+                {{ isDarkMode ? '🌙' : '☀️' }}
+            </button>
+        </header>
+        <!-- 作品集區塊 -->
+        <section class="portfolio">
+            <h1>我的作品集</h1>
+            <div class="portfolio-grid">
+                <div v-for="project in projects" 
+                     :key="project.id" 
+                     class="portfolio-item">
+                    <img :src="project.image" :alt="project.title">
+                    <div class="portfolio-info">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <a :href="project.link" target="_blank" class="btn">查看詳情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html> 
